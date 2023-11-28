@@ -115,37 +115,16 @@ const links = [
     },
 ];
 
-const IndexPage = () => {
+const HelloPage = () => {
     return (
         <main style={pageStyles}>
             <h1 style={headingStyles}>
-                Congratulations
+                Hello
                 <br />
                 <span style={headingAccentStyles}>
-                    — you just made a Gatsby site! 🎉🎉🎉
+                    — the redirect worked! 🎉🎉🎉
                 </span>
             </h1>
-            <p style={paragraphStyles}>
-                This is a minimal reproduction of Gatsby redirects not working
-                on Vercel even though they're supposed to 🥲
-            </p>
-            <p style={paragraphStyles}>
-                Redirects configured with <code>createRedirect</code> in
-                gatsby-node.js as per docs. Gatsby says redirects need to be
-                implemented server-side. Vercel documentation indicates this is
-                meant to work.
-            </p>
-            <ul>
-                <li>
-                    This is a proxy. A redirect that resolves with 200 but
-                    serves data from elsewhere 👉{" "}
-                    <a href="/stats/js/script.js">click me</a>
-                </li>
-                <li>
-                    This is a redirect. You expect to be routed to a different
-                    page 👉 <a href="/i-dont-exist">click me</a>
-                </li>
-            </ul>
 
             <img
                 alt="Gatsby G Logo"
@@ -155,6 +134,6 @@ const IndexPage = () => {
     );
 };
 
-export default IndexPage;
+export default HelloPage;
 
-export const Head = () => <title>Home Page</title>;
+export const Head = () => <title>Hello Page</title>;
