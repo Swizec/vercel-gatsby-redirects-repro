@@ -12,6 +12,11 @@ exports.createPages = async ({ actions }) => {
         toPath: "https://plausible.io/js/plausible.js",
         statusCode: 200,
     });
+    actions.createRedirect({
+        fromPath: "/stats/api/event",
+        toPath: "https://plausible.io/api/event",
+        statusCode: 200,
+    });
 
     /**
      * Gatsby redirect: https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/#directions
