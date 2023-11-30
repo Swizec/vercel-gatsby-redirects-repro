@@ -13,7 +13,7 @@ exports.createPages = async ({ actions }) => {
         statusCode: 200,
     });
     actions.createRedirect({
-        fromPath: "/stats/api/event",
+        fromPath: "/stats/api/event/",
         toPath: "https://plausible.io/api/event",
         statusCode: 200,
     });
