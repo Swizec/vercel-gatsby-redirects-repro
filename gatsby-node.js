@@ -8,7 +8,7 @@ exports.createPages = async ({ actions }) => {
      * Vercel returns a 307 and redirects you to the toPath
      */
     actions.createRedirect({
-        fromPath: "/stats/js/script.js",
+        fromPath: "/stats/js/script.js/",
         toPath: "https://plausible.io/js/plausible.js",
         statusCode: 200,
     });
@@ -20,7 +20,7 @@ exports.createPages = async ({ actions }) => {
      * Vercel returns a 404 and serves pages/404.js
      */
     actions.createRedirect({
-        fromPath: "/i-dont-exist",
+        fromPath: "/i-dont-exist/",
         toPath: "/hello",
         isPermanent: true,
     });
