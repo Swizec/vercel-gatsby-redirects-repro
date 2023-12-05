@@ -162,6 +162,11 @@ const config = {
                 path: `${__dirname}/src/images`,
             },
         },
+        "gatsby-plugin-twitter",
+        "gatsby-plugin-catch-links",
+        "gatsby-plugin-theme-ui",
+        "gatsby-plugin-react-helmet",
+        "gatsby-plugin-image",
     ],
 };
 

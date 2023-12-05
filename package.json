@@ -10,8 +10,13 @@
   "dependencies": {
     "@mdx-js/react": "^3.0.0",
     "gatsby": "^5.0.0",
+    "gatsby-plugin-catch-links": "^5.12.0",
+    "gatsby-plugin-image": "^3.12.3",
     "gatsby-plugin-mdx": "^5.12.3",
+    "gatsby-plugin-react-helmet": "^6.12.0",
     "gatsby-plugin-sharp": "^5.12.3",
+    "gatsby-plugin-theme-ui": "^0.16.1",
+    "gatsby-plugin-twitter": "^5.12.3",
     "gatsby-remark-copy-linked-files": "^6.12.0",
     "gatsby-remark-embedder": "^7.0.0",
     "gatsby-remark-images": "^7.12.3",

@@ -3359,7 +3359,7 @@ camelcase@^5.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
-camelcase@^6.2.0:
+camelcase@^6.2.0, camelcase@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
@@ -5505,6 +5505,34 @@ gatsby-parcel-config@1.12.1:
     "@parcel/transformer-js" "2.8.3"
     "@parcel/transformer-json" "2.8.3"
 
+gatsby-plugin-catch-links@^5.12.0:
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-5.12.0.tgz#48ba08e24262d4456630da651e36e4e5730ab494"
+  integrity sha512-00qLnXgZbKmnaRHtZRbwovJAMZQlQ+DoLBTXXr3zE3SDsmgO9NBmlv2q7e43ovHj7MZ9pqQdJYDWweqrcBA9EQ==
+  dependencies:
+    "@babel/runtime" "^7.20.13"
+    escape-string-regexp "^1.0.5"
+
+gatsby-plugin-image@^3.12.3:
+  version "3.12.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-3.12.3.tgz#7e1484d014afbe0005497934b4215938a69fcf56"
+  integrity sha512-945XpVY/14M9msfOI2fulunEUSJnw0YnwfbRq7omvqAWOH/fCnXWkyYj89NAcmNIOSM/a+KgQyaIDosnVHXdpw==
+  dependencies:
+    "@babel/code-frame" "^7.18.6"
+    "@babel/parser" "^7.20.13"
+    "@babel/runtime" "^7.20.13"
+    "@babel/traverse" "^7.20.13"
+    babel-jsx-utils "^1.1.0"
+    babel-plugin-remove-graphql-queries "^5.12.1"
+    camelcase "^6.3.0"
+    chokidar "^3.5.3"
+    common-tags "^1.8.2"
+    fs-extra "^11.1.1"
+    gatsby-core-utils "^4.12.1"
+    gatsby-plugin-utils "^4.12.3"
+    objectFitPolyfill "^2.3.5"
+    prop-types "^15.8.1"
+
 gatsby-plugin-mdx@^5.12.3:
   version "5.12.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-5.12.3.tgz#d7006fd3d9199d0b66c003a9077d9dbb6725e8b9"
@@ -5548,6 +5576,13 @@ gatsby-plugin-page-creator@^5.12.3:
     globby "^11.1.0"
     lodash "^4.17.21"
 
+gatsby-plugin-react-helmet@^6.12.0:
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-6.12.0.tgz#8e6a2ec967a33a0c48266316c92844ea3272d4b2"
+  integrity sha512-agcBCT9H8nlpkAU3D1fUeJbjh7IMPjGO/njoa7avIYLGsQ2nyGlHwcrEmS2zBHxYKaxPkztvr47OpCdnuEIvEw==
+  dependencies:
+    "@babel/runtime" "^7.20.13"
+
 gatsby-plugin-sharp@^5.12.3:
   version "5.12.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-5.12.3.tgz#b736e6f5a852090df318246c156bc2096824bc14"
@@ -5565,6 +5600,18 @@ gatsby-plugin-sharp@^5.12.3:
     probe-image-size "^7.2.3"
     semver "^7.5.3"
     sharp "^0.32.6"
+
+gatsby-plugin-theme-ui@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.16.1.tgz#4e020eebd912dd8e40f50fd510f558447a2aac2c"
+  integrity sha512-k8WakJsjfcxb+VchrGKXAOrSa4wqyTvb6XniwqwdxphqeTsHa8kSmmUlD+bqZuY6kPDiExSgT7UlBQTABEm7EQ==
+
+gatsby-plugin-twitter@^5.12.3:
+  version "5.12.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-twitter/-/gatsby-plugin-twitter-5.12.3.tgz#27afe3570d7e793e6502231c201e6a91022b2662"
+  integrity sha512-nshGGOQcw2R3q+F0omMy1YtVODplqJecSfWIXf/g3AUmS4V2EpvL+63zMIoOxLB6CchUsssARlwVXYNfdT98hw==
+  dependencies:
+    "@babel/runtime" "^7.20.13"
 
 gatsby-plugin-typescript@^5.12.1:
   version "5.12.1"
@@ -8290,6 +8337,11 @@ object.values@^1.1.6, object.values@^1.1.7:
     call-bind "^1.0.2"
     define-properties "^1.2.0"
     es-abstract "^1.22.1"
+
+objectFitPolyfill@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/objectFitPolyfill/-/objectFitPolyfill-2.3.5.tgz#be8c83064aabfa4e88780f776c2013c48ce1f745"
+  integrity sha512-8Quz071ZmGi0QWEG4xB3Bv5Lpw6K0Uca87FLoLMKMWjB6qIq9IyBegP3b/VLNxv2WYvIMGoeUQ+c6ibUkNa8TA==
 
 on-finished@2.4.1:
   version "2.4.1"
