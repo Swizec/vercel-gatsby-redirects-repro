@@ -73,6 +73,80 @@ const config = {
                 ],
             },
         },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `pages`,
+                path: `src/pages`,
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/pages`,
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `src/components`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/components`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `src/@swizec/gatsby-theme-course-platform/components`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/components/FormCK`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/components/FormCK/ContentUpgrades`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `src/@swizec/gatsby-theme-course-platform/components/FormCK`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `src/@swizec/gatsby-theme-course-platform/components/FormCK/ContentUpgrades`,
+                ignore: ["**/*.js"],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `src/images`,
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/images`,
+            },
+        },
     ],
 };
 
