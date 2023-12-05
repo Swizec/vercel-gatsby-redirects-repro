@@ -13,6 +13,11 @@ const config = {
     siteMetadata: {
         title: `Gatsby + Vercel`,
         siteUrl: `https://gatsby-template.vercel.app/`,
+        convertkit: {
+            userId: "785fc7ef1f",
+            formId: "772ba7c9ba",
+            url: "https://pages.convertkit.com/785fc7ef1f/772ba7c9ba",
+        },
     },
     plugins: [
         "gatsby-transformer-sharp",
