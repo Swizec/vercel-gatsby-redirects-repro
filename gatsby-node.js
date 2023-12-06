@@ -1,4 +1,6 @@
 exports.createPages = async ({ actions }) => {
+    await createRedirectsFromConfigFile({ actions });
+
     /**
      * Gatsby proxy: https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/#rewrites-and-reverse-proxies
      *
@@ -30,12 +32,35 @@ exports.createPages = async ({ actions }) => {
         isPermanent: true,
     });
 
-    actions.createRedirect({
-        fromPath: "/blog/feed/",
-        toPath: "/rss.xml",
-        isPermanent: true,
-    });
+    // actions.createRedirect({
+    //     fromPath: "/blog/feed/",
+    //     toPath: "/rss.xml",
+    //     isPermanent: true,
+    // });
 };
+
+async function createRedirectsFromConfigFile({ actions }) {
+    const redirects = fs.readFileSync("./static/_redirects").toString();
+
+    for (const line of redirects.split("\n")) {
+        if (line.trim().length > 0) {
+            // found a redirect
+            let [fromPath, toPath] = line.trim().split(/\s+/);
+            if (!fromPath.endsWith("/")) {
+                fromPath += "/";
+            }
+
+            console.log(`Creating redirect from ${fromPath} to ${toPath}`);
+            actions.createRedirect({
+                fromPath,
+                toPath,
+                redirectInBrowser: true,
+            });
+        }
+    }
+
+    console.log(`success create redirects from _redirects`);
+}
 
 // adds fields { slug } to every MD page
 exports.onCreateNode = ({ node, actions }) => {
