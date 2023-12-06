@@ -56,7 +56,6 @@ async function createRedirectsFromConfigFile({ actions }) {
             actions.createRedirect({
                 fromPath,
                 toPath,
-                redirectInBrowser: true,
             });
         }
     }
