@@ -29,4 +29,33 @@ exports.createPages = async ({ actions }) => {
         toPath: "/hello",
         isPermanent: true,
     });
+
+    actions.createRedirect({
+        fromPath: "/blog/feed/",
+        toPath: "/rss.xml",
+        isPermanent: true,
+    });
+};
+
+// adds fields { slug } to every MD page
+exports.onCreateNode = ({ node, actions }) => {
+    const { createNodeField } = actions;
+
+    if (
+        node.internal.type === "MarkdownRemark" ||
+        node.internal.type === "Mdx"
+    ) {
+        if (node.internal.contentFilePath.includes("/pages/")) {
+            const slug = node.internal.contentFilePath
+                .split("/pages/")[1]
+                .replace(/\.(mdx|md)$/, "")
+                .replace(/\/index$/, "");
+
+            createNodeField({
+                node,
+                name: "slug",
+                value: `/${slug}`,
+            });
+        }
+    }
 };
