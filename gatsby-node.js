@@ -15,10 +15,19 @@ exports.createPages = async ({ actions }) => {
      */
     const redirects = fs.readFileSync("./static/_redirects").toString();
 
-    for (const { fromPath, toPath } of [
-        { fromPath: "/blog/feed/", toPath: "/rss.xml" },
-    ]) {
-        actions.createRedirect({ fromPath, toPath });
+    for (const line of ["/blog/feed  /rss.xml"]) {
+        if (line.trim().length > 0) {
+            let [fromPath, toPath] = line.trim().split(/\s+/);
+            if (!fromPath.endsWith("/")) {
+                fromPath += "/";
+            }
+
+            console.log(`Creating redirect from ${fromPath} to ${toPath}`);
+            actions.createRedirect({
+                fromPath,
+                toPath,
+            });
+        }
     }
 
     // for (const line of redirects.split("\n")) {
