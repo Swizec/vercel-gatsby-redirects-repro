@@ -2,12 +2,12 @@ const fs = require("fs");
 
 exports.createPages = async ({ actions }) => {
     /**
-     * It is specifically this that breaks. Awaiting an async function that creates redirects doesn't work.
+     * It is specifically this that breaks. Awaiting an async function that creates redirects in a loop doesn't work.
      */
     // await createRedirectsFromConfigFile({ actions });
 
     /**
-     * Copying the same code here seems to work
+     * Copying the loop here also doesn't work. Looks like this is specific to how Vercel's platform parallelizes loops maybe?
      */
     const redirects = fs.readFileSync("./static/_redirects").toString();
 
