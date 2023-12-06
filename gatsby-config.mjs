@@ -167,6 +167,14 @@ const config = {
         "gatsby-plugin-theme-ui",
         "gatsby-plugin-react-helmet",
         "gatsby-plugin-image",
+        {
+            resolve: "gatsby-plugin-advanced-sitemap",
+            options: {
+                createLinkInHead: true,
+                addUncaughtPages: true,
+                exclude: ["/404"],
+            },
+        },
     ],
 };
 
