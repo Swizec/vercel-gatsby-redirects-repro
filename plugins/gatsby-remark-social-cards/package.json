@@ -1,0 +1,11 @@
+{
+  "name": "gatsby-remark-social-cards",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^10.0.1",
+    "path": "^0.12.7",
+    "slugify": "^1.6.5"
+  }
+}

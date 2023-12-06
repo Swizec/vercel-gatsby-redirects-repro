@@ -1,4 +1,63 @@
+const fs = require("fs");
+
 exports.createPages = async ({ actions }) => {
+    /**
+     * It is specifically this that breaks. Awaiting an async function that creates redirects in a loop doesn't work.
+     *
+     * /blog/feed is a good URL to try
+     */
+    // await createRedirectsFromConfigFile({ actions });
+
+    /**
+     * Copying the loop here also doesn't work.
+     *
+     * /blog/feed is a good URL to try
+     *
+     * We know it tried to be created because this shows in logs:
+     * Creating redirect from '/blog/feed/' to '/rss.xml'
+     */
+    const redirects = fs.readFileSync("./static/_redirects").toString();
+
+    // for (const line of redirects.split("\n")) {
+    //     if (line.trim().length > 0) {
+    //         // found a redirect
+    //         let [fromPath, toPath] = line.trim().split(/\s+/);
+    //         if (!fromPath.endsWith("/")) {
+    //             fromPath += "/";
+    //         }
+
+    //         console.log(`Creating redirect from '${fromPath}' to '${toPath}'`);
+    //         actions.createRedirect({
+    //             fromPath,
+    //             toPath,
+    //         });
+    //     }
+    // }
+
+    /**
+     * But reproducing the same loop without a file read works
+     *
+     * This shows up in logs:
+     * Creating redirect from '/blog/feed/' to '/rss.xml'
+     */
+    for (const line of ["/blog/feed  /rss.xml"]) {
+        if (line.trim().length > 0) {
+            // found a redirect
+            let [fromPath, toPath] = line.trim().split(/\s+/);
+            if (!fromPath.endsWith("/")) {
+                fromPath += "/";
+            }
+
+            console.log(`Creating redirect from '${fromPath}' to '${toPath}'`);
+            actions.createRedirect({
+                fromPath,
+                toPath,
+            });
+        }
+    }
+
+    console.log(`success create redirects from _redirects`);
+
     /**
      * Gatsby proxy: https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/#rewrites-and-reverse-proxies
      *
@@ -29,4 +88,55 @@ exports.createPages = async ({ actions }) => {
         toPath: "/hello",
         isPermanent: true,
     });
+
+    // actions.createRedirect({
+    //     fromPath: "/blog/feed/",
+    //     toPath: "/rss.xml",
+    //     isPermanent: true,
+    // });
+};
+
+async function createRedirectsFromConfigFile({ actions }) {
+    const redirects = fs.readFileSync("./static/_redirects").toString();
+
+    for (const line of redirects.split("\n")) {
+        if (line.trim().length > 0) {
+            // found a redirect
+            let [fromPath, toPath] = line.trim().split(/\s+/);
+            if (!fromPath.endsWith("/")) {
+                fromPath += "/";
+            }
+
+            console.log(`Creating redirect from ${fromPath} to ${toPath}`);
+            actions.createRedirect({
+                fromPath,
+                toPath,
+            });
+        }
+    }
+
+    console.log(`success create redirects from _redirects`);
+}
+
+// adds fields { slug } to every MD page
+exports.onCreateNode = ({ node, actions }) => {
+    const { createNodeField } = actions;
+
+    if (
+        node.internal.type === "MarkdownRemark" ||
+        node.internal.type === "Mdx"
+    ) {
+        if (node.internal.contentFilePath.includes("/pages/")) {
+            const slug = node.internal.contentFilePath
+                .split("/pages/")[1]
+                .replace(/\.(mdx|md)$/, "")
+                .replace(/\/index$/, "");
+
+            createNodeField({
+                node,
+                name: "slug",
+                value: `/${slug}`,
+            });
+        }
+    }
 };

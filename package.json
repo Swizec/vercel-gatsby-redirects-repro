@@ -8,8 +8,31 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@mdx-js/react": "^3.0.0",
+    "@theme-ui/mdx": "^0.16.1",
+    "@vercel/gatsby-plugin-vercel-builder": "^2.0.11",
     "gatsby": "^5.0.0",
+    "gatsby-plugin-advanced-sitemap": "^2.1.0",
+    "gatsby-plugin-catch-links": "^5.12.0",
+    "gatsby-plugin-feed": "^5.12.3",
+    "gatsby-plugin-image": "^3.12.3",
+    "gatsby-plugin-manifest": "^5.12.3",
+    "gatsby-plugin-mdx": "^5.12.3",
+    "gatsby-plugin-react-helmet": "^6.12.0",
+    "gatsby-plugin-sharp": "^5.12.3",
+    "gatsby-plugin-theme-ui": "^0.16.1",
+    "gatsby-plugin-twitter": "^5.12.3",
+    "gatsby-remark-copy-linked-files": "^6.12.0",
+    "gatsby-remark-embedder": "^7.0.0",
+    "gatsby-remark-images": "^7.12.3",
+    "gatsby-source-filesystem": "^5.12.1",
+    "gatsby-transformer-sharp": "^5.12.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "theme-ui": "^0.16.1"
   }
 }
