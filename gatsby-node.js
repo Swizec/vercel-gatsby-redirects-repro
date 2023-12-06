@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 exports.createPages = async ({ actions }) => {
     await createRedirectsFromConfigFile({ actions });
 
