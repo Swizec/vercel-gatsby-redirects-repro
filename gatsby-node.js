@@ -38,7 +38,7 @@ exports.createPages = async ({ actions }) => {
      * But reproducing the same loop without a file read works
      *
      * This shows up in logs:
-     *
+     * Creating redirect from '/blog/feed/' to '/rss.xml'
      */
     for (const line of ["/blog/feed  /rss.xml"]) {
         if (line.trim().length > 0) {
