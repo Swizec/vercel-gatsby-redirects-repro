@@ -1,7 +1,33 @@
 const fs = require("fs");
 
 exports.createPages = async ({ actions }) => {
-    await createRedirectsFromConfigFile({ actions });
+    /**
+     * It is specifically this that breaks. Awaiting an async function that creates redirects doesn't work.
+     */
+    // await createRedirectsFromConfigFile({ actions });
+
+    /**
+     * Copying the same code here seems to work
+     */
+    const redirects = fs.readFileSync("./static/_redirects").toString();
+
+    for (const line of redirects.split("\n")) {
+        if (line.trim().length > 0) {
+            // found a redirect
+            let [fromPath, toPath] = line.trim().split(/\s+/);
+            if (!fromPath.endsWith("/")) {
+                fromPath += "/";
+            }
+
+            console.log(`Creating redirect from ${fromPath} to ${toPath}`);
+            actions.createRedirect({
+                fromPath,
+                toPath,
+            });
+        }
+    }
+
+    console.log(`success create redirects from _redirects`);
 
     /**
      * Gatsby proxy: https://www.gatsbyjs.com/docs/how-to/cloud/working-with-redirects-and-rewrites/#rewrites-and-reverse-proxies
@@ -53,7 +79,7 @@ async function createRedirectsFromConfigFile({ actions }) {
             }
 
             console.log(`Creating redirect from ${fromPath} to ${toPath}`);
-            await actions.createRedirect({
+            actions.createRedirect({
                 fromPath,
                 toPath,
             });
