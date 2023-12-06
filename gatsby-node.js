@@ -53,7 +53,7 @@ async function createRedirectsFromConfigFile({ actions }) {
             }
 
             console.log(`Creating redirect from ${fromPath} to ${toPath}`);
-            actions.createRedirect({
+            await actions.createRedirect({
                 fromPath,
                 toPath,
             });
