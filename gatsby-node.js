@@ -9,13 +9,38 @@ exports.createPages = async ({ actions }) => {
     // await createRedirectsFromConfigFile({ actions });
 
     /**
-     * Copying the loop here also doesn't work. Looks like this is specific to how Vercel's platform parallelizes loops maybe?
+     * Copying the loop here also doesn't work.
      *
      * /blog/feed is a good URL to try
+     *
+     * We know it tried to be created because this shows in logs:
+     * Creating redirect from '/blog/feed/' to '/rss.xml'
      */
     const redirects = fs.readFileSync("./static/_redirects").toString();
 
-    for (const line of redirects.split("\n")) {
+    // for (const line of redirects.split("\n")) {
+    //     if (line.trim().length > 0) {
+    //         // found a redirect
+    //         let [fromPath, toPath] = line.trim().split(/\s+/);
+    //         if (!fromPath.endsWith("/")) {
+    //             fromPath += "/";
+    //         }
+
+    //         console.log(`Creating redirect from '${fromPath}' to '${toPath}'`);
+    //         actions.createRedirect({
+    //             fromPath,
+    //             toPath,
+    //         });
+    //     }
+    // }
+
+    /**
+     * But reproducing the same loop without a file read works
+     *
+     * This shows up in logs:
+     *
+     */
+    for (const line of ["/blog/feed  /rss.xml"]) {
         if (line.trim().length > 0) {
             // found a redirect
             let [fromPath, toPath] = line.trim().split(/\s+/);
