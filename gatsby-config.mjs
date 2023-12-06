@@ -30,6 +30,7 @@ const config = {
         },
     },
     plugins: [
+        "@vercel/gatsby-plugin-vercel-builder",
         "gatsby-transformer-sharp",
         "gatsby-plugin-sharp",
         {
@@ -186,6 +187,60 @@ const config = {
                 theme_color: "#FF002B",
                 display: "standalone",
                 icon: "./static/icon.png",
+            },
+        },
+        {
+            resolve: "gatsby-plugin-feed",
+            options: {
+                query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+                feeds: [
+                    {
+                        output: "/rss.xml",
+                        title: "swizec.com RSS Feed",
+                        match: "^/blog/|^/interviews/",
+                        query: `{
+  allMdx(
+    filter: {internal: { contentFilePath: {regex: "/blog/.+/"}}}
+    sort: {frontmatter: {published: DESC}}
+    limit: 50
+  ) {
+    nodes {
+      frontmatter {
+        title
+        description
+        published
+      }
+      fields {
+        slug
+      }
+    }
+  }
+}`,
+                        serialize: ({ query: { site, allMdx } }) => {
+                            return allMdx.nodes.map((node) => {
+                                const url = new URL(site.siteMetadata.siteUrl);
+                                url.pathname = node.fields.slug + "/";
+
+                                return Object.assign({}, node.frontmatter, {
+                                    date: node.frontmatter.published,
+                                    url: url.href,
+                                    guid: url.href,
+                                });
+                            });
+                        },
+                    },
+                ],
             },
         },
     ],
