@@ -15,7 +15,9 @@ exports.createPages = async ({ actions }) => {
      */
     const redirects = fs.readFileSync("./static/_redirects").toString();
 
-    for (const { fromPath, toPath } of ["/blog/feed/", "/rss.xml"]) {
+    for (const { fromPath, toPath } of [
+        { fromPath: "/blog/feed/", toPath: "/rss.xml" },
+    ]) {
         actions.createRedirect({ fromPath, toPath });
     }
 
