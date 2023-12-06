@@ -175,6 +175,19 @@ const config = {
                 exclude: ["/404"],
             },
         },
+        {
+            resolve: "gatsby-plugin-manifest",
+            options: {
+                name: "Course platform",
+                short_name: "Course platform",
+                description: "Theme for a course platform",
+                start_url: "/",
+                background_color: "#fff",
+                theme_color: "#FF002B",
+                display: "standalone",
+                icon: "./static/icon.png",
+            },
+        },
     ],
 };
 
